@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.neo.mapper.IndividualtrangleMapper" >
     <insert id="insertTrangle" parameterType="Map">
-        insert into talentcode_test.individualtrangle
+        insert into individualtrangle
         (individualid,D1,D2,M1,M2,Y1,Y2,Y3,Y4,A1,
     A2,A3,A4,B1,B2,C1,E1,E2,E3,F1,F2,F3,G1,G2,H1)
 
@@ -68,7 +68,7 @@
     </insert>
 
     <insert id="insertIndividual" parameterType="Map">
-        INSERT INTO talentcode_test.individual (userid,name,gender,relationshipid,dateofbirth,created_at)
+        INSERT INTO individual (userid,name,gender,relationshipid,dateofbirth,created_at)
         VALUES(#{userid},
         #{name},
         #{gender},
@@ -79,7 +79,7 @@
     </insert>
 
     <insert id="insertUser" parameterType="Map">
-        INSERT INTO talentcode_test.user (nickname,openId,wxId)
+        INSERT INTO user (nickname,openId,wxId)
         VALUES(#{nickname},
         #{openId},
         #{wxId}

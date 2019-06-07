@@ -2,26 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.neo.mapper.QueryMapper" >
     <select id="getUserId" parameterType="Map" resultType="java.lang.Integer">
-        select id from talentcode_test.user where wxId = #{wxId};
+        select id from  user where wxId = #{wxId};
     </select>
     <select id="getindividualprofile" parameterType="Map" resultType="java.util.Map">
          select i.name,it.D1,it.D2,it.M1,it.M2,it.Y1,it.Y2,it.Y3,it.Y4,it.A1,it.A2,it.A3,it.A4,
           it.B1,it.B2,it.C1,it.E1,it.E2,it.E3, it.F1,it.F2,it.F3,it.G1,it.G2,it.H1,
           ic.TC_I_1, ic.TC_I_2, ic.TC_I_3,ic.TC_L_1, ic.TC_L_2, ic.TC_L_3, ic.TC_U_1, ic.TC_U_2, ic.TC_U_3,ic.TC_R_1, ic.TC_R_2, ic.TC_R_3,
           tf.Element
-          from talentcode_test.individual i
-          left join talentcode_test.individualtrangle it on i.id=it.individualid
-          left join talentcode_test.individualtalentcode ic on i.id=ic.individualid
-          left join talentcode_test.fiveelement tf on it.C1=tf.id
+          from  individual i
+          left join  individualtrangle it on i.id=it.individualid
+          left join  individualtalentcode ic on i.id=ic.individualid
+          left join  fiveelement tf on it.C1=tf.id
           where i.id=#{id}
     </select>
     <select id="getUserindividual" parameterType="Map" resultType="com.neo.model.Individual">
         select ti.name, rs.name as rs,ti.dateofbirth, tf.Element as element
-        from talentcode_test.user tu
-        left join talentcode_test.individual ti on tu.id=ti.userid
-        left join talentcode_test.individualtrangle it on ti.id=it.individualid
-        left join talentcode_test.fiveelement tf on it.C1=tf.id
-        left join talentcode_test.relationship rs on ti.relationshipid=rs.id
+        from  user tu
+        left join  individual ti on tu.id=ti.userid
+        left join  individualtrangle it on ti.id=it.individualid
+        left join  fiveelement tf on it.C1=tf.id
+        left join  relationship rs on ti.relationshipid=rs.id
         where tu.id=#{id}
     </select>
     <select id="getindividualShortTalent" parameterType="Map" resultType="java.util.Map">
@@ -30,23 +30,23 @@
     tcd_l1.talentShortDescription as tcd_l1_sd, tcd_l2.talentShortDescription as tcd_l2_sd,tcd_l3.talentShortDescription as tcd_l3_sd,
     tcd_u1.talentShortDescription as tcd_u1_sd, tcd_u2.talentShortDescription as tcd_u2_sd,tcd_u3.talentShortDescription as tcd_u3_sd,
     tcd_r1.talentShortDescription as tcd_r1_sd, tcd_r2.talentShortDescription as tcd_r2_sd,tcd_r3.talentShortDescription as tcd_r3_sd
-    from talentcode_test.individualtalentcode itc
-    left join talentcode_test.talentcodedictionary tcd_i1 on itc.TC_I_1=tcd_i1.talentCode
-    left join talentcode_test.talentcodedictionary tcd_i2 on itc.TC_I_2=tcd_i2.talentCode
-    left join talentcode_test.talentcodedictionary tcd_i3 on itc.TC_I_3=tcd_i3.talentCode
-    left join talentcode_test.talentcodedictionary tcd_l1 on itc.TC_L_1=tcd_l1.talentCode
-    left join talentcode_test.talentcodedictionary tcd_l2 on itc.TC_L_2=tcd_l2.talentCode
-    left join talentcode_test.talentcodedictionary tcd_l3 on itc.TC_L_3=tcd_l3.talentCode
-    left join talentcode_test.talentcodedictionary tcd_u1 on itc.TC_U_1=tcd_u1.talentCode
-    left join talentcode_test.talentcodedictionary tcd_u2 on itc.TC_U_2=tcd_u2.talentCode
-    left join talentcode_test.talentcodedictionary tcd_u3 on itc.TC_U_3=tcd_u3.talentCode
-    left join talentcode_test.talentcodedictionary tcd_r1 on itc.TC_R_1=tcd_r1.talentCode
-    left join talentcode_test.talentcodedictionary tcd_r2 on itc.TC_R_2=tcd_r2.talentCode
-    left join talentcode_test.talentcodedictionary tcd_r3 on itc.TC_R_3=tcd_r3.talentCode
+    from  individualtalentcode itc
+    left join  talentcodedictionary tcd_i1 on itc.TC_I_1=tcd_i1.talentCode
+    left join  talentcodedictionary tcd_i2 on itc.TC_I_2=tcd_i2.talentCode
+    left join  talentcodedictionary tcd_i3 on itc.TC_I_3=tcd_i3.talentCode
+    left join  talentcodedictionary tcd_l1 on itc.TC_L_1=tcd_l1.talentCode
+    left join  talentcodedictionary tcd_l2 on itc.TC_L_2=tcd_l2.talentCode
+    left join  talentcodedictionary tcd_l3 on itc.TC_L_3=tcd_l3.talentCode
+    left join  talentcodedictionary tcd_u1 on itc.TC_U_1=tcd_u1.talentCode
+    left join  talentcodedictionary tcd_u2 on itc.TC_U_2=tcd_u2.talentCode
+    left join  talentcodedictionary tcd_u3 on itc.TC_U_3=tcd_u3.talentCode
+    left join  talentcodedictionary tcd_r1 on itc.TC_R_1=tcd_r1.talentCode
+    left join  talentcodedictionary tcd_r2 on itc.TC_R_2=tcd_r2.talentCode
+    left join  talentcodedictionary tcd_r3 on itc.TC_R_3=tcd_r3.talentCode
     where itc.individualId=#{id}
     </select>
 
     <select id="getExampleFigure" parameterType="Map" resultType="java.util.Map">
-        select C1, Name, Description from talentcode_test.examplefiugure where C1=#{C1};
+        select C1, Name, Description from  examplefiugure where C1=#{C1};
     </select>
 </mapper>
